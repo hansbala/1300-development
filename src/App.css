@@ -13,3 +13,14 @@ a {
   color: #333;
   text-decoration: none;
 }
+
+/* Documentation for CounterInput: https://github.com/manojsinghnegiwd/react-bootstrap-counter */
+/* Button Styling */
+.counter-input .input-group-addon {
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+  padding: 5px;
+  background-color: #eee;
+}
