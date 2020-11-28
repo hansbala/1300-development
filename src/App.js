@@ -69,7 +69,6 @@ class App extends Component {
       },
       () => this.refineCarList()
     );
-    // this.refineCarList();
   };
 
   // Changes the brand filter category
@@ -80,7 +79,6 @@ class App extends Component {
       },
       () => this.refineCarList()
     );
-    // this.refineCarList();
   };
 
   // Changes the year filter category
@@ -91,7 +89,6 @@ class App extends Component {
       },
       () => this.refineCarList()
     );
-    // this.refineCarList();
   };
 
   // Modifies the cart count by (val)
