@@ -4,50 +4,94 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 
+import { masterCarList } from "./assets/carList";
 import Header from "./layout/Header";
 import CarList from "./components/CarList";
 import Cart from "./components/Cart";
+import Refine from "./components/Refine";
 
 class App extends Component {
   state = {
-    cars: [
+    cars: masterCarList,
+    refinedCars: masterCarList,
+    brandCategory: "All",
+    yearCategory: "All",
+    priceCategory: "Select",
+  };
+
+  // Sorts and filters the original list based on the state variables
+  refineCarList = () => {
+    // Filter and then sort
+    let localRefined = masterCarList;
+    // Filter by brand
+    localRefined = localRefined.filter((car) => {
+      return (
+        this.state.brandCategory === "All" ||
+        car.brand === this.state.brandCategory
+      );
+    });
+    localRefined = localRefined.filter((car) => {
+      return (
+        this.state.yearCategory === "All" ||
+        car.year === parseInt(this.state.yearCategory)
+      );
+    });
+    // Finally sort by price but don't sort at all if not selected
+    if (this.state.priceCategory === "Select") {
+      this.setState({
+        refinedCars: localRefined,
+      });
+      return;
+    }
+    let mult = 1;
+    if (this.state.priceCategory === "Highest to Lowest") mult = -1;
+    localRefined.sort((car1, car2) => {
+      if (car1.price < car2.price) {
+        return -1 * mult;
+      } else if (car1.price > car2.price) {
+        return 1 * mult;
+      } else {
+        return 0;
+      }
+    });
+    this.setState({
+      refinedCars: localRefined,
+    });
+  };
+
+  // Changes the price category and then sorts the list
+  changePriceSort = (sortType) => {
+    // Sort type can be one of the following:
+    // ["Select", "Lowest to Highest", "Highest to Lowest"]
+    this.setState(
       {
-        id: 1,
-        model: "Gallardo",
-        brand: "Lamborghini",
-        year: 2009,
-        price: 120099,
-        imageName: "lamborghini_gallardo.jpg",
-        cartCounter: 0,
+        priceCategory: sortType,
       },
+      () => this.refineCarList()
+    );
+    // this.refineCarList();
+  };
+
+  // Changes the brand filter category
+  changeBrandFilter = (filterName) => {
+    this.setState(
       {
-        id: 2,
-        model: "Gallardo",
-        brand: "Lamborghini",
-        year: 2009,
-        price: 120099,
-        imageName: "lamborghini_gallardo.jpg",
-        cartCounter: 0,
+        brandCategory: filterName,
       },
+      () => this.refineCarList()
+    );
+    // this.refineCarList();
+  };
+
+  // Changes the year filter category
+  changeYearFilter = (filterName) => {
+    this.setState(
       {
-        id: 3,
-        model: "Gallardo",
-        brand: "Lamborghini",
-        year: 2009,
-        price: 120099,
-        imageName: "lamborghini_gallardo.jpg",
-        cartCounter: 0,
+        yearCategory: filterName,
       },
-      {
-        id: 4,
-        model: "Gallardo",
-        brand: "Lamborghini",
-        year: 2009,
-        price: 120099,
-        imageName: "lamborghini_gallardo.jpg",
-        cartCounter: 0,
-      },
-    ],
+      () => this.refineCarList()
+    );
+    // this.refineCarList();
   };
 
   // Modifies the cart count by (val)
@@ -75,7 +119,6 @@ class App extends Component {
 
   // Changes the number of instances of particular item to val in the cart
   changeNumInCart = (id, val) => {
-    console.log("this is running");
     this.setState({
       cars: this.state.cars.map((car) => {
         if (car.id === id) {
@@ -97,7 +140,16 @@ class App extends Component {
         <Header />
         <Row>
           <Col md={8}>
-            <CarList addToCart={this.addToCart} cars={this.state.cars} />
+            {/* Filtering component */}
+            <Refine
+              changeBrandFilter={this.changeBrandFilter}
+              changeYearFilter={this.changeYearFilter}
+              changePriceSort={this.changePriceSort}
+              brandCategory={this.state.brandCategory}
+              yearCategory={this.state.yearCategory}
+              priceCategory={this.state.priceCategory}
+            />
+            <CarList addToCart={this.addToCart} cars={this.state.refinedCars} />
           </Col>
           <Col md={4}>
             <Cart

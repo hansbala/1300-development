@@ -1,0 +1,38 @@
+export const masterCarList = [
+  {
+    id: 1,
+    model: "Gallardo",
+    brand: "Lamborghini",
+    year: 2009,
+    price: 2,
+    imageName: "lamborghini_gallardo.jpg",
+    cartCounter: 0,
+  },
+  {
+    id: 2,
+    model: "Huracan",
+    brand: "Lamborghini",
+    year: 2019,
+    price: 4,
+    imageName: "lamborghini_gallardo.jpg",
+    cartCounter: 0,
+  },
+  {
+    id: 3,
+    model: "Model S",
+    brand: "Tesla",
+    year: 2019,
+    price: 1,
+    imageName: "lamborghini_gallardo.jpg",
+    cartCounter: 0,
+  },
+  {
+    id: 4,
+    model: "Model 3",
+    brand: "Tesla",
+    year: 2019,
+    price: 6,
+    imageName: "lamborghini_gallardo.jpg",
+    cartCounter: 0,
+  },
+];

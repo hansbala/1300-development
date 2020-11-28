@@ -25,8 +25,9 @@ export class Car extends Component {
         <Card.Body>
           <Card.Title> {brand + " " + model} </Card.Title>
           <Card.Text>
-            <p>Year: {year}</p>
-            <p>Price: ${price}</p>
+            <span>Year: {year}</span>
+            <br></br>
+            <span>Price: ${price}</span>
           </Card.Text>
           <Button
             onClick={this.props.addToCart.bind(this, id)}

@@ -12,7 +12,6 @@ class Cart extends Component {
       return cartItem.cartCounter !== 0;
     });
     cartItems.forEach((car) => (totalAmount += car.price * car.cartCounter));
-    console.log(cartItems);
     return (
       <div style={cartWrapperStyle}>
         <h2>Shopping Cart</h2>
