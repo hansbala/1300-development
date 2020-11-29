@@ -7,8 +7,8 @@ import DropdownButton from "react-bootstrap/DropdownButton";
 export class Refine extends Component {
   render() {
     return (
-      <Container>
-        <div className="d-flex flex-row align-items-center py-1">
+      <Container className="d-flex flex-row my-4">
+        <div className="d-flex flex-row align-items-center px-2">
           <span className="mr-2">Filter by Brand:</span>
           <DropdownButton
             id="dropdown-basic-button"
@@ -23,7 +23,7 @@ export class Refine extends Component {
             <Dropdown.Item eventKey="Chevrolet">Chevrolet</Dropdown.Item>
           </DropdownButton>
         </div>
-        <div className="d-flex flex-row align-items-center py-1">
+        <div className="d-flex flex-row align-items-center px-2">
           <span className="mr-2">Filter by Year:</span>
           <DropdownButton
             id="dropdown-basic-button-2"
@@ -37,7 +37,7 @@ export class Refine extends Component {
             <Dropdown.Item eventKey="2019">2019</Dropdown.Item>
           </DropdownButton>
         </div>
-        <div className="d-flex flex-row align-items-center py-1">
+        <div className="d-flex flex-row align-items-center px-2">
           <span className="mr-2">Sort by Price:</span>
           <DropdownButton
             id="dropdown-basic-button-3"
@@ -61,7 +61,6 @@ export class Refine extends Component {
 Refine.propTypes = {
   brandCategory: propTypes.string.isRequired,
   yearCategory: propTypes.string.isRequired,
-  // 0 = no sort, 1 = ascending, 2 = descending
   priceCategory: propTypes.string.isRequired,
   changeBrandFilter: propTypes.func.isRequired,
   changeYearFilter: propTypes.func.isRequired,

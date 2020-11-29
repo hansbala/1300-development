@@ -17,7 +17,15 @@ import Button from "react-bootstrap/Button";
  */
 export class Car extends Component {
   render() {
-    const { id, model, brand, year, price, imageName } = this.props.car;
+    const {
+      id,
+      model,
+      brand,
+      year,
+      price,
+      imageName,
+      cartCounter,
+    } = this.props.car;
     const imgPath = "img/" + imageName;
     return (
       <Card style={cardStyle}>
@@ -32,6 +40,7 @@ export class Car extends Component {
           <Button
             onClick={this.props.addToCart.bind(this, id)}
             variant="primary"
+            disabled={cartCounter !== 0}
           >
             Add to Cart
           </Button>

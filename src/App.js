@@ -136,7 +136,7 @@ class App extends Component {
       <Container fluid>
         <Header />
         <Row>
-          <Col md={8}>
+          <Col md={7}>
             {/* Filtering component */}
             <Refine
               changeBrandFilter={this.changeBrandFilter}
@@ -148,7 +148,7 @@ class App extends Component {
             />
             <CarList addToCart={this.addToCart} cars={this.state.refinedCars} />
           </Col>
-          <Col md={4}>
+          <Col md={5}>
             <Cart
               changeNumInCart={this.changeNumInCart}
               removeFromCart={this.removeFromCart}

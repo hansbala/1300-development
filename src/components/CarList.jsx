@@ -10,7 +10,7 @@ export class CarList extends Component {
   render() {
     return (
       <Container>
-        <h2>List Of Available Cars</h2>
+        {/* <h2>List Of Available Cars</h2> */}
         <Row>
           {this.props.cars.map((car) => (
             <Col md={4} sm={6} key={car.id}>

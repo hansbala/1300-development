@@ -14,7 +14,7 @@ class Cart extends Component {
     cartItems.forEach((car) => (totalAmount += car.price * car.cartCounter));
     return (
       <div style={cartWrapperStyle}>
-        <h2>Shopping Cart</h2>
+        <h2>Cart</h2>
         <Row>
           {cartItems.map((car) => (
             <Col md={6} sm={6} key={car.id}>

@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import propTypes from "prop-types";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
-import CounterInput from "react-bootstrap-counter";
 
 export class CartItem extends Component {
   changeNumInCart(id, value) {
@@ -10,15 +9,7 @@ export class CartItem extends Component {
   }
 
   render() {
-    const {
-      id,
-      brand,
-      model,
-      imageName,
-      price,
-      year,
-      cartCounter,
-    } = this.props.cartItem;
+    const { id, brand, model, imageName, price, year } = this.props.cartItem;
     const imgPath = "img/" + imageName;
     return (
       <Card style={cartCardStyle}>
@@ -26,16 +17,10 @@ export class CartItem extends Component {
         <Card.Body>
           <Card.Title> {brand + " " + model} </Card.Title>
           <Card.Text>
-            <p>Year: {year}</p>
-            <p>Price: ${price}</p>
+            <span>Year: {year}</span>
+            <br></br>
+            <span>Price: ${price}</span>
           </Card.Text>
-          {/* Number of items in the cart */}
-          <CounterInput
-            min={1}
-            max={10}
-            value={cartCounter}
-            onChange={this.props.changeNumInCart.bind(this, id)}
-          />
           <Button
             onClick={this.props.removeFromCart.bind(this, id)}
             variant="primary"
