@@ -19,7 +19,7 @@ export class CartItem extends Component {
           <Card.Text>
             <span>Year: {year}</span>
             <br></br>
-            <span>Price: ${price}</span>
+            <span>Price: ${price.toLocaleString("en-US")}</span>
           </Card.Text>
           <Button
             onClick={this.props.removeFromCart.bind(this, id)}
@@ -37,6 +37,7 @@ export class CartItem extends Component {
 // Cart Item Card Style
 const cartCardStyle = {
   textAlign: "center",
+  height: "100%",
 };
 
 CartItem.propTypes = {

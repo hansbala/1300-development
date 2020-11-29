@@ -35,7 +35,7 @@ export class Car extends Component {
           <Card.Text>
             <span>Year: {year}</span>
             <br></br>
-            <span>Price: ${price}</span>
+            <span>Price: ${price.toLocaleString("en-US")}</span>
           </Card.Text>
           <Button
             onClick={this.props.addToCart.bind(this, id)}
@@ -52,8 +52,9 @@ export class Car extends Component {
 
 // Each car card styling
 const cardStyle = {
-  margin: "10px",
+  // backgroundColor: "#a6f6f1",
   textAlign: "center",
+  height: "100%",
 };
 
 // Define props for the Car component

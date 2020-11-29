@@ -7,7 +7,10 @@ import DropdownButton from "react-bootstrap/DropdownButton";
 export class Refine extends Component {
   render() {
     return (
-      <Container className="d-flex flex-row my-4">
+      <Container
+        className="d-flex flex-md-row flex-lg-row flex-xl-row flex-column my-4 mx-0"
+        // style={{ backgroundColor: "#fff" }}
+      >
         <div className="d-flex flex-row align-items-center px-2">
           <span className="mr-2">Filter by Brand:</span>
           <DropdownButton
@@ -41,6 +44,7 @@ export class Refine extends Component {
           <span className="mr-2">Sort by Price:</span>
           <DropdownButton
             id="dropdown-basic-button-3"
+            variant="warning"
             onSelect={this.props.changePriceSort}
             title={this.props.priceCategory}
           >

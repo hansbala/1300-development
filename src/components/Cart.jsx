@@ -17,7 +17,7 @@ class Cart extends Component {
         <h2>Cart</h2>
         <Row>
           {cartItems.map((car) => (
-            <Col md={6} sm={6} key={car.id}>
+            <Col md={6} sm={6} key={car.id} className="my-2">
               <CartItem
                 changeNumInCart={this.props.changeNumInCart}
                 removeFromCart={this.props.removeFromCart}
@@ -26,7 +26,7 @@ class Cart extends Component {
             </Col>
           ))}
         </Row>
-        <h3>Total Amount: ${totalAmount}</h3>
+        <h3>Total Amount: ${totalAmount.toLocaleString("en-US")}</h3>
       </div>
     );
   }
@@ -34,7 +34,8 @@ class Cart extends Component {
 
 // Cart Wrapper Style
 const cartWrapperStyle = {
-  padding: "10px",
+  padding: "20px",
+  backgroundColor: "#fff",
 };
 
 // Static checking of prop types

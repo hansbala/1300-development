@@ -133,19 +133,19 @@ class App extends Component {
 
   render() {
     return (
-      <Container fluid>
+      <Container fluid style={containerWrapperStyle}>
         <Header />
+        {/* Filtering component */}
+        <Refine
+          changeBrandFilter={this.changeBrandFilter}
+          changeYearFilter={this.changeYearFilter}
+          changePriceSort={this.changePriceSort}
+          brandCategory={this.state.brandCategory}
+          yearCategory={this.state.yearCategory}
+          priceCategory={this.state.priceCategory}
+        />
         <Row>
           <Col md={7}>
-            {/* Filtering component */}
-            <Refine
-              changeBrandFilter={this.changeBrandFilter}
-              changeYearFilter={this.changeYearFilter}
-              changePriceSort={this.changePriceSort}
-              brandCategory={this.state.brandCategory}
-              yearCategory={this.state.yearCategory}
-              priceCategory={this.state.priceCategory}
-            />
             <CarList addToCart={this.addToCart} cars={this.state.refinedCars} />
           </Col>
           <Col md={5}>
@@ -160,5 +160,9 @@ class App extends Component {
     );
   }
 }
+
+const containerWrapperStyle = {
+  backgroundColor: "#eee",
+};
 
 export default App;

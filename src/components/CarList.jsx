@@ -9,11 +9,11 @@ import Car from "./Car";
 export class CarList extends Component {
   render() {
     return (
-      <Container>
+      <Container style={{ backgroundColor: "#fff" }} className="p-4">
         {/* <h2>List Of Available Cars</h2> */}
-        <Row>
+        <Row className="d-flex flex-wrap">
           {this.props.cars.map((car) => (
-            <Col md={4} sm={6} key={car.id}>
+            <Col md={4} sm={6} key={car.id} className="my-2">
               <Car addToCart={this.props.addToCart} car={car} />
             </Col>
           ))}
