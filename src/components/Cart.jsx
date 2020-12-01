@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import propTypes from "prop-types";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
+import Button from "react-bootstrap/Button";
 
 import CartItem from "./CartItem";
 
@@ -12,6 +13,21 @@ class Cart extends Component {
       return cartItem.cartCounter !== 0;
     });
     cartItems.forEach((car) => (totalAmount += car.price * car.cartCounter));
+    let checkoutButton;
+    if (cartItems.length > 0) {
+      checkoutButton = (
+        <Button
+          onClick={() =>
+            alert("Thanks for checking out! Total amount is: " + totalAmount)
+          }
+          variant="primary"
+        >
+          Checkout
+        </Button>
+      );
+    } else {
+      checkoutButton = <React.Fragment></React.Fragment>;
+    }
     return (
       <div style={cartWrapperStyle}>
         <h2>Cart</h2>
@@ -27,6 +43,7 @@ class Cart extends Component {
           ))}
         </Row>
         <h3>Total Amount: ${totalAmount.toLocaleString("en-US")}</h3>
+        {checkoutButton}
       </div>
     );
   }
